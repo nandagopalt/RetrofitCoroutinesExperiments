@@ -3,6 +3,7 @@ package com.example.coroutinesexperiments2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,11 +22,17 @@ class MainActivity : AppCompatActivity() {
          */
 
         // Structured concurrency : Switching from Main thread to IO thread
-        //Log.i("Stock","Before launch: ${Thread.currentThread().name}")
+        // Log.i("Stock","Before launch: ${Thread.currentThread().name}")
         CoroutineScope(Dispatchers.Main).launch {
+            Log.i("Stock", "Calculation started...")
             // serialDecomposition()
-            Log.i("Stock", "Calculation started..." )
-            parallelDecomposition()
+            // parallelDecomposition()
+            val count = UserDataManager1().getUserCount()
+            Toast.makeText(
+                applicationContext, "User Count : $count",
+                Toast.LENGTH_LONG
+            ).show()
+            Log.i("Stock", "Count: $count")
         }
     }
 
@@ -45,31 +52,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private suspend fun parallelDecomposition() {
-        CoroutineScope(Dispatchers.IO).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             //Log.i(
-             //   "Stock",
+            //   "Stock",
             //    "Stock counting (Inside coroutine launch) Task execution from ${Thread.currentThread().name}"
             //)
-            val result1 = async { getStockCount1() }
+            val result1 = async(Dispatchers.IO) { getStockCount1() }
             //Log.i("Stock", "Received stock count 1: ${result1.await()}")
-            val result2 = async { getStockCount2() }
+            val result2 = async(Dispatchers.IO) { getStockCount2() }
             //Log.i("Stock", "Received stock count 2: ${result2.await()}")
             val result = result1.await() + result2.await()
             Log.i("Stock", "Stock count:${result}")
+            Toast.makeText(applicationContext, "Stock count:${result}", Toast.LENGTH_LONG).show()
         }
     }
 
-   private suspend fun getStockCount1(): Int {
-      delay(10000)
-       Log.i("Stock", "(Inside getStockCount1) Task execution from ${Thread.currentThread().name}")
-       Log.i("Stock", "Returning Stock 1")
-      return 5500
-  }
+    private suspend fun getStockCount1(): Int {
+        delay(10000)
+        Log.i("Stock", "(Inside getStockCount1) Task execution from ${Thread.currentThread().name}")
+        Log.i("Stock", "Returning Stock 1")
+        return 5500
+    }
 
-  private suspend fun getStockCount2(): Int {
-      delay(12000)
-      Log.i("Stock", "(Inside getStockCount2) Task execution from ${Thread.currentThread().name}")
-      Log.i("Stock", "Returning Stock 2")
-      return 11000
-  }
+    private suspend fun getStockCount2(): Int {
+        delay(12000)
+        Log.i("Stock", "(Inside getStockCount2) Task execution from ${Thread.currentThread().name}")
+        Log.i("Stock", "Returning Stock 2")
+        return 11000
+    }
 }
