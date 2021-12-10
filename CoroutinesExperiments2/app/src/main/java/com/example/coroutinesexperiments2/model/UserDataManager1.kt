@@ -1,4 +1,4 @@
-package com.example.coroutinesexperiments2
+package com.example.coroutinesexperiments2.model
 
 import android.util.Log
 import kotlinx.coroutines.*
