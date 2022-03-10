@@ -3,12 +3,11 @@ package com.amalwin.coroutinesexperiments3
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.amalwin.coroutinesexperiments3.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -21,9 +20,13 @@ class MainActivity : AppCompatActivity() {
         Log.i("MYTAG", "onCreate " + this.applicationContext + "," + this)
 
         activityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        activityViewModel.countLiveData.observe(this, Observer {
+        /*activityViewModel.countLiveData.observe(this) {
             binding.txtCount.text = it.toString()
-        })
+        }*/
+
+        activityViewModel.downloadLiveData.observe(this) {
+            binding.downloadCount.text = it.toString()
+        }
 
         binding.downloadButton.setOnClickListener {
             Log.i("MYTAG", "Download data button clicked !")
@@ -32,17 +35,42 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnCompleted.setOnClickListener {
+            finish()
+        }
+
         binding.incrementButton.setOnClickListener {
             Log.i("MYTAG", "Increment button clicked !")
-            activityViewModel.incrementCount()
+            //activityViewModel.incrementCount()
+            // binding.txtCount.text = UserDataManager1().getUserCountV1().toString()
+            CoroutineScope(Dispatchers.Main).launch {
+                binding.txtCount.text = UserDataManager1().getUserCountV2().toString()
+            }
         }
     }
 
-    private fun downloadUserInformation() {
-        for (i in 1..50000) {
-            Log.i("MYTAG", "Thread downloading $i in ${Thread.currentThread().name}")
+    private suspend fun downloadUserInformation() {
+        //withContext(Dispatchers.Main) {
+        //for (i in 1..50000) {
+        //  delay(10)
+        //Log.i("MYTAG", "Thread downloading $i in ${Thread.currentThread().name}")
+        //binding.downloadCount.text =
+        //"Thread downloading $i in ${Thread.currentThread().name}"
+
+        //activityViewModel.incrementDownloadCount()
+
+        //}
+
+        CoroutineScope(Dispatchers.Main).launch {
+            Log.i("MYTAG", "Calculation Started !")
+            val stock1 = async(Dispatchers.IO) { activityViewModel.getUserStock1() }
+            val stock2 = async(Dispatchers.IO) { activityViewModel.getUserStock2() }
+            val total = stock1.await() + stock2.await()
+            Toast.makeText(applicationContext, "Total is $total", Toast.LENGTH_LONG).show()
+            //Log.i("MYTAG", "Total is $total")
         }
     }
+
 
     private fun updateCount() {
         Log.i("MYTAG", "Thread running from ${Thread.currentThread().name}")
