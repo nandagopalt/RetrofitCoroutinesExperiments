@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel() : ViewModel() {
     private val countMutableLiveData = MutableLiveData<Int>()
     private val downloadCountLiveData = MutableLiveData<String>()
     val countLiveData: LiveData<Int>

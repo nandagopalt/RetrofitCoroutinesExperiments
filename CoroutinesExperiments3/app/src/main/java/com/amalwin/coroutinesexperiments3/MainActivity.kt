@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var activityViewModel: MainActivityViewModel
+    private lateinit var userViewModel: UserViewModel
     private var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         Log.i("MYTAG", "onCreate " + this.applicationContext + "," + this)
 
         activityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        userViewModel = ViewModelProvider(this)[UserViewModel::class.java]
         /*activityViewModel.countLiveData.observe(this) {
             binding.txtCount.text = it.toString()
         }*/
@@ -27,6 +29,12 @@ class MainActivity : AppCompatActivity() {
         activityViewModel.downloadLiveData.observe(this) {
             binding.downloadCount.text = it.toString()
         }
+
+        userViewModel.userListLiveData.observe(this@MainActivity, Observer { userList ->
+            userList.forEach {
+                Log.i("MYTAG", it.name)
+            }
+        })
 
         binding.downloadButton.setOnClickListener {
             Log.i("MYTAG", "Download data button clicked !")
@@ -43,9 +51,14 @@ class MainActivity : AppCompatActivity() {
             Log.i("MYTAG", "Increment button clicked !")
             //activityViewModel.incrementCount()
             // binding.txtCount.text = UserDataManager1().getUserCountV1().toString()
+            /* CoroutineScope(Dispatchers.Main).launch {
+                 binding.txtCount.text = UserDataManager1().getUserCountV2().toString()
+             }*/
             CoroutineScope(Dispatchers.Main).launch {
-                binding.txtCount.text = UserDataManager1().getUserCountV2().toString()
+                userViewModel.getUserData()
             }
+
+
         }
     }
 
