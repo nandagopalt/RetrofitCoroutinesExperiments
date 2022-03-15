@@ -1,8 +1,9 @@
 package com.amalwin.tmdbretrofitcoroutinesexperiment.domain.actors.usecase
 
+import com.amalwin.tmdbretrofitcoroutinesexperiment.data.model.actor.Actor
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.model.actor.ActorsList
 import com.amalwin.tmdbretrofitcoroutinesexperiment.domain.actors.repository.ActorRepository
 
 class UpdateActorsUseCase(private val actorRepository: ActorRepository) {
-    suspend fun execute(): ActorsList? = actorRepository.updateActors()
+    suspend fun execute(): List<Actor>? = actorRepository.updateActors()
 }

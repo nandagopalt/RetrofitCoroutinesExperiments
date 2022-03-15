@@ -13,12 +13,14 @@ class ActorRepositoryImpl(
     private val actorLocalDataSource: ActorLocalDataSource,
     private val actorCacheDataSource: ActorCacheDataSource
 ) : ActorRepository {
-    override suspend fun getActors(): ActorsList? {
-        TODO("Not yet implemented")
-    }
+    override suspend fun getActors(): List<Actor> = getActorsFromCache()
 
-    override suspend fun updateActors(): ActorsList? {
-        TODO("Not yet implemented")
+    override suspend fun updateActors(): List<Actor> {
+        val newActorsList = getActorsFromAPI()
+        actorLocalDataSource.clearAll()
+        actorLocalDataSource.saveActorsToDB(newActorsList)
+        actorCacheDataSource.saveActors(newActorsList)
+        return newActorsList
     }
 
     suspend fun getActorsFromAPI(): List<Actor> {

@@ -19,6 +19,7 @@ class MovieRepositoryImpl(
         val newMoviesList = getMoviesFromAPI()
         movieLocalDataSource.clearAll()
         movieLocalDataSource.saveMoviesToDB(newMoviesList)
+        movieCacheDataSource.saveMoviesToCache(newMoviesList)
         return newMoviesList
     }
 
