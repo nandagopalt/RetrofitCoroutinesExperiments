@@ -1,12 +1,15 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.movie.MovieActivity
+import com.amalwin.tmdbretrofitcoroutinesexperiment.R
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.tvshow.TVShowActivity
 import com.amalwin.tmdbretrofitcoroutinesexperiment.databinding.ActivityMainBinding
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.actor.ActorActivity
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MYTAG"
