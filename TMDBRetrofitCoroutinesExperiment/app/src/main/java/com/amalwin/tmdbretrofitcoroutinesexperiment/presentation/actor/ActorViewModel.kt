@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.actor
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

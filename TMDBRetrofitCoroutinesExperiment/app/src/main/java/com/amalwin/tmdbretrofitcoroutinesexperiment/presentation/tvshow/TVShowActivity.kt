@@ -1,8 +1,9 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.tvshow
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.amalwin.tmdbretrofitcoroutinesexperiment.R
 import com.amalwin.tmdbretrofitcoroutinesexperiment.databinding.ActivityTvshowBinding
 
 class TVShowActivity : AppCompatActivity() {

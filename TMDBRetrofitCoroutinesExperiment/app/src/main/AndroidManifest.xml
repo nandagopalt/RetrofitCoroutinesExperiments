@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMDBRetrofitCoroutinesExperiment">
         <activity
-            android:name=".ActorActivity"
+            android:name=".presentation.actor.ActorActivity"
             android:exported="false" />
         <activity
-            android:name=".TVShowActivity"
+            android:name=".presentation.tvshow.TVShowActivity"
             android:exported="false" />
         <activity
-            android:name=".MovieActivity"
+            android:name=".presentation.movie.MovieActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
