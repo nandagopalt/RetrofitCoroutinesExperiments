@@ -19,6 +19,7 @@ class NetworkModule(private val baseURL: String) {
             .build()
     }
 
+    @Singleton
     @Provides
     fun providesTMDBService(retrofit: Retrofit): TMDBService {
         return retrofit.create(TMDBService::class.java)
