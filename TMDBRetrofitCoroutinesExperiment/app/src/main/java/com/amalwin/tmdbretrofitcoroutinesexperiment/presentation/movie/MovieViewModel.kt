@@ -10,7 +10,7 @@ class MovieViewModel(
     private val updateMoviesUseCase: UpdateMoviesUseCase
 ) : ViewModel() {
     init {
-
+t
     }
 
     fun getMovies() = liveData {

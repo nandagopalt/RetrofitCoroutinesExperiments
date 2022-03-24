@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMDBRetrofitCoroutinesExperiment">
         <activity
+            android:name=".presentation.ArtistActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.actor.ActorActivity"
             android:exported="false" />
         <activity
