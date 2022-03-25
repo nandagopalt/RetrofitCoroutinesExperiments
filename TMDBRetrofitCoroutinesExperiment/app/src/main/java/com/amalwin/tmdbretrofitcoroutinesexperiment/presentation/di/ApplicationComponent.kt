@@ -17,6 +17,8 @@ import javax.inject.Singleton
     ]
 )
 interface ApplicationComponent {
-
     // We will have the factory methods after creating the sub components
+    fun movieSubComponent(): MovieSubComponent.Factory
+    fun tvShowSubComponent(): TVShowSubComponent.Factory
+    fun actorSubComponent(): ActorSubComponent.Factory
 }
