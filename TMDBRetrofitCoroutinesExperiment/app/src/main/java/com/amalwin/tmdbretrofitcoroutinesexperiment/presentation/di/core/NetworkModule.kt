@@ -1,10 +1,12 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.core
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.api.TMDBService
 import dagger.Module
 import dagger.Provides
-import retrofit.GsonConverterFactory
-import retrofit.Retrofit
+import okhttp3.OkHttp
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module

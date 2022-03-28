@@ -1,11 +1,15 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.core
 
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.actor.ActorSubComponent
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.movie.MovieSubComponent
+import com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.tvshow.TVShowSubComponent
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
+        ApplicationModule::class,
         NetworkModule::class,
         DatabaseModule::class,
         RemoteDataModule::class,
@@ -13,7 +17,6 @@ import javax.inject.Singleton
         CacheDataModule::class,
         RepositoryModule::class,
         UseCaseModule::class,
-        ApplicationModule::class
     ]
 )
 interface ApplicationComponent {

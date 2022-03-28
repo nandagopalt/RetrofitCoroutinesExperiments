@@ -3,7 +3,8 @@ package com.amalwin.tmdbretrofitcoroutinesexperiment.data.repository.datasourcei
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.api.TMDBService
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.model.actor.ActorsList
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.repository.datasource.ActorRemoteDataSource
-import retrofit.Response
+import retrofit2.Response
+
 
 class ActorRemoteDataSourceImpl(private val tmdbService: TMDBService, private val apiKey: String) :
     ActorRemoteDataSource {

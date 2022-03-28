@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.core
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.api.TMDBService
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.repository.datasource.ActorRemoteDataSource
