@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.core
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.repository.datasource.ActorCacheDataSource
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.repository.datasource.MovieCacheDataSource

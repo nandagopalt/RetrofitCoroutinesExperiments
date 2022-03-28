@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.tvshow
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.domain.tvshows.usecase.GetTVShowsUseCase
 import com.amalwin.tmdbretrofitcoroutinesexperiment.domain.tvshows.usecase.UpdateTVShowsUseCase

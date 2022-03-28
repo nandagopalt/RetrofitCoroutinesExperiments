@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.movie
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.domain.movies.usecase.GetMoviesUseCase
 import com.amalwin.tmdbretrofitcoroutinesexperiment.domain.movies.usecase.UpdateMoviesUseCase

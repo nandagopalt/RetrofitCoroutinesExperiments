@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.tvshow
 
 import javax.inject.Scope
 

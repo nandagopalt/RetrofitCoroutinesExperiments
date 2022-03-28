@@ -1,4 +1,4 @@
-package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di
+package com.amalwin.tmdbretrofitcoroutinesexperiment.presentation.di.core
 
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.db.ActorDAO
 import com.amalwin.tmdbretrofitcoroutinesexperiment.data.db.MovieDAO
