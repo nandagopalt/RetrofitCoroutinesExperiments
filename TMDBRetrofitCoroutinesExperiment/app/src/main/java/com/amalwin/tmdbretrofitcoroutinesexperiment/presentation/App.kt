@@ -21,16 +21,13 @@ class App: Application(), Injector {
 
     override fun createMovieSubcomponent(): MovieSubComponent {
        return appComponent.movieSubComponent().create()
-
     }
 
     override fun createTVShowSubComponent(): TVShowSubComponent {
         return appComponent.tvShowSubComponent().create()
-
     }
 
     override fun createActorSubComponent(): ActorSubComponent {
         return appComponent.actorSubComponent().create()
-
     }
 }
