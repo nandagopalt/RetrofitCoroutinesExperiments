@@ -18,6 +18,7 @@ android {
 
         buildConfigField "String", "API_KEY", "\"8c9ff1166f0fb1a8f8a6ba6f10db48cf\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500/\""
     }
 
     buildTypes {
@@ -25,8 +26,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-
-
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,6 +43,8 @@ android {
 
 dependencies {
 
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
     def viewmodel_version = '2.5.0-alpha04'
     def livedata_version = '2.5.0-alpha04'
     def coroutines_version = '1.6.0'
